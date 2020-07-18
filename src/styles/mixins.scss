@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+$dark: #1b262c;
+$light: #bbe1fa;
+
+$blue: #3282b8;
+$blue-dark: #0f4c75;
+$blue-light: #3282b8;
+
+@mixin text-body {
+    font-size: 21px;
+    font-family: 'Mukta', sans-serif;
+}

@@ -1,13 +1,56 @@
+@import './mixins';
+
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #191c20;
-  background-color: #eeeeee;
+  color: $blue-light;
+  background-color: $dark;
+  position: relative;
+  font-family: 'Mukta', sans-serif;
+  font-size: 16px;
 }
+
 #map {
   height: 100%;
 }
+
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+#hud {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    pointer-events: none;
+    & > * {
+      pointer-events: auto;
+    }
+}
+#composer {
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  background: rgba(27, 38, 44, 0.6);
+  border: 2px solid #BBE1FA;
+  box-sizing: border-box;
+  box-shadow: -4px 8px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+
+  @include text-body;
+  &::placeholder {
+    color: rgba(187, 225, 250, 0.55);
+  }
+  color: $blue-light;
+  padding: 1.2rem 1.6rem;
+}
+
+#logo {
+  position: relative;
+  left: 0.5rem;
+  top: 3rem;
 }
