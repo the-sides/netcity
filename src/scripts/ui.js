@@ -36,7 +36,7 @@ const handleComposer = () => {
         }, 1500)
     })
     composerElm.addEventListener('change', () => {
-        if(composerElm.value === '') {
+        if (composerElm.value === '') {
             helpElm.classList.remove('prompt')
         }
     })
@@ -71,32 +71,41 @@ const createPin = (pnt, map) => {
         map: map,
         title: 'Hello World!'
     });
-    return marker; 
+    return marker;
 }
 
 const createPins = (pins) => {
     pins.forEach(pin => {
         const pnt = { lat: Number(pin.lat), lng: Number(pin.lng) }
+
+        var contentString =
+            '<p>' +
+            pin.content +
+            "</p>";
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+
         const marker = new google.maps.Marker({
             position: pnt,
             map: map,
-            title: pins.content,
+            title: pin.content,
             animation: google.maps.Animation.DROP,
+        });
+        marker.addListener("click", function () {
+            infowindow.open(map, marker);
         });
         createFeedItem(pin, marker)
     })
 }
 
 const createFeedItem = (pin, marker = false) => {
-        const newPostElm = document.createElement('div')
-        feed.append(newPostElm)
-        newPostElm.outerHTML = `<div class="post"> <i><svg xmlns="http://www.w3.org/2000/svg" width="68" height="100" viewBox="0 0 68 100" fill="none"><path d="M0 6.77775V72.342C0 74.8431 1.55144 77.0818 3.89326 77.96L59.8933 98.96C63.8158 100.431 68 97.5312 68 93.342V28.6013C68 26.1284 66.4828 23.9087 64.1786 23.0108L8.17864 1.18727C4.24482 -0.34577 0 2.55576 0 6.77775Z" fill="#1B262C"></path></svg></i><div class="msg"><p>${pin.content}</p></div></div>`
-        newPostElm.addEventListener('mousedown', () => {
-            console.log('post click')
-                if (marker.getAnimation() !== null) {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
-        })
+    const newPostElm = document.createElement('div')
+    feed.append(newPostElm)
+    newPostElm.outerHTML = `<div class="post"> <i><svg xmlns="http://www.w3.org/2000/svg" width="68" height="100" viewBox="0 0 68 100" fill="none"><path d="M0 6.77775V72.342C0 74.8431 1.55144 77.0818 3.89326 77.96L59.8933 98.96C63.8158 100.431 68 97.5312 68 93.342V28.6013C68 26.1284 66.4828 23.9087 64.1786 23.0108L8.17864 1.18727C4.24482 -0.34577 0 2.55576 0 6.77775Z" fill="#1B262C"></path></svg></i><div class="msg"><p>${pin.content}</p></div></div>`
+    if (marker) window.markers.push(marker)
 }
 
 
