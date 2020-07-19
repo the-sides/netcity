@@ -153,6 +153,22 @@ body {
   color: $light;
 }
 
+.composerHelp {
+  position: absolute;
+  left: 2rem;
+  bottom: 13rem;
+  font-size: 24px;
+  color: $light;
+  background: rgba(27, 38, 44, 0.6);
+  width: 412px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  &.prompt {
+    opacity: 1;
+  }
+}
+
 #composer {
   position: absolute;
   left: 2rem;

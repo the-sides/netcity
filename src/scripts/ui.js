@@ -22,10 +22,28 @@ const handlePostAccept = () => {
     composerElm.value = '';
 }
 
+const handleComposer = () => {
+    const helpElm = document.querySelector('.composerHelp');
+    composerElm.addEventListener('focus', () => {
+        helpElm.classList.add('prompt')
+    })
+    composerElm.addEventListener('blur', () => {
+        setTimeout(() => {
+            helpElm.classList.remove('prompt')
+        }, 1500)
+    })
+    composerElm.addEventListener('change', () => {
+        if(composerElm.value === '') {
+            helpElm.classList.remove('prompt')
+        }
+    })
+}
+
 const attachHandlers = () => {
     const postCancelBtn = curtainElm.querySelector('.cancelBtn');
     postCancelBtn.addEventListener('click', handlePostCancel)
     postAcceptBtn.addEventListener('click', handlePostAccept);
+    handleComposer()
 }
 
 
