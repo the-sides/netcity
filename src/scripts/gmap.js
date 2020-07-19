@@ -30,6 +30,7 @@ window.initMap = function() {
         zoom: 16
       })
 
+    //   https://stackoverflow.com/questions/13984338/get-map-latitude-longitude-from-mouse-position
     google.maps.event.addListener(map, 'click', function (event) {
         clickCoordinates(event.latLng, map);               
     });

@@ -1,3 +1,4 @@
+import {postPin} from './db';
 
 const composerElm = document.querySelector('#composer');
 const curtainElm = document.querySelector('#curtain');
@@ -15,8 +16,11 @@ const handlePostCancel = () => {
 
 const handlePostAccept = () => {
     createPin(window.submitBody.pnt, window.submitBody.map);
+    postPin(window.submitBody.pnt, composerElm.value)
+
     curtainElm.classList.remove('prompt')
     composerElm.value = '';
+
 }
 
 const attachHandlers = () => {
