@@ -120,6 +120,11 @@ body {
   &:nth-child(1) {
     margin-top: 0;
   }
+  pointer-events: all;
+  cursor: pointer;
+  * {
+    pointer-events: none;
+  }
   margin-top: -1.5rem;
   display: flex;
   align-items: flex-end;
