@@ -1,10 +1,10 @@
-@import './mixins';
+@import "./mixins";
 
 body {
   color: $blue-light;
   background-color: $dark;
   position: relative;
-  font-family: 'Mukta', sans-serif;
+  font-family: "Mukta", sans-serif;
   font-size: 16px;
 }
 
@@ -12,7 +12,8 @@ body {
   height: 100%;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -22,14 +23,14 @@ html, body {
   width: 100%;
   height: 100%;
   position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    pointer-events: none;
-    & > * {
-      pointer-events: auto;
-    }
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  & > * {
+    pointer-events: auto;
+  }
 }
 
 #curtain {
@@ -45,13 +46,16 @@ html, body {
   & > * {
     z-index: 19;
   }
+
   opacity: 0;
-  transition: opacity 0.3s ease-in-out ;
+  transition: opacity 0.3s ease-in-out;
   display: none;
+
   &.prompt {
     display: block;
     opacity: 1;
   }
+
   #confirm {
     position: absolute;
     @include inset;
@@ -60,7 +64,8 @@ html, body {
     width: 30vw;
     height: 25vh;
   }
-  .btn, span {
+  .btn,
+  span {
     position: absolute;
     bottom: -5rem;
     &.cancelBtn {
@@ -89,10 +94,10 @@ html, body {
     }
   }
   span {
-      z-index: 22;
-      bottom: -5.25rem;
-      margin: 1.3rem;
-      pointer-events: none;
+    z-index: 22;
+    bottom: -5.25rem;
+    margin: 1.3rem;
+    pointer-events: none;
   }
   h4 {
     font-size: 28px;
@@ -105,16 +110,46 @@ html, body {
   }
 }
 
+#feed {
+  position: absolute;
+  right: 1.25rem;
+  top: 5rem;
+}
+
+.post {
+  &:nth-child(1) {
+    margin-top: 0;
+  }
+  margin-top: -1.5rem;
+  display: flex;
+  align-items: flex-end;
+  .msg {
+    margin-left: 0.2rem;
+    margin-bottom: 0.75rem;
+    height: 68px;
+    width: 156px;
+    padding: 0rem 1rem;
+    color: $light;
+    background-color: $dark;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    display: flex;
+    align-items: center;
+  }
+}
+
 .box {
   padding: 1.2rem 1.6rem;
   background: rgba(27, 38, 44, 0.6);
-  border: 2px solid #BBE1FA;
+  border: 2px solid #bbe1fa;
   box-sizing: border-box;
   border-radius: 8px;
   outline: none;
-  
+
   @include text-body;
-  
+
   color: $light;
 }
 
@@ -127,8 +162,6 @@ html, body {
     color: rgba(187, 225, 250, 0.55);
   }
 }
-
-
 
 #logo {
   position: relative;

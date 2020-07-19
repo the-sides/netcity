@@ -3,6 +3,9 @@ import { db, getPins } from './db';
 import { attachHandlers, createPins, createFeed } from './ui';
 
 getPins()
-    .then(createPins)
+    .then(pins => {
+        createPins(pins);
+        createFeed(pins);
+    })
 
 window.addEventListener('DOMContentLoaded', attachHandlers);
