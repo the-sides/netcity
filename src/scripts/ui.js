@@ -1,4 +1,4 @@
-import {postPin} from './db';
+import { postPin } from './db';
 
 const composerElm = document.querySelector('#composer');
 const curtainElm = document.querySelector('#curtain');
@@ -20,13 +20,12 @@ const handlePostAccept = () => {
 
     curtainElm.classList.remove('prompt')
     composerElm.value = '';
-
 }
 
 const attachHandlers = () => {
     const postCancelBtn = curtainElm.querySelector('.cancelBtn');
-    postCancelBtn.addEventListener('click', handlePostCancel )
-    postAcceptBtn.addEventListener('click', handlePostAccept );
+    postCancelBtn.addEventListener('click', handlePostCancel)
+    postAcceptBtn.addEventListener('click', handlePostAccept);
 }
 
 
@@ -34,13 +33,13 @@ const confirmPost = (pnt, map) => {
     const content = composerElm.value
     if (content === '') return false;
 
-    postPreviewElm.textContent = content; 
+    postPreviewElm.textContent = content;
     curtainElm.classList.add('prompt')
 
     // Setup the "accept" listener data
     window.submitBody = {
-        pnt: pnt, 
-        map: map, 
+        pnt: pnt,
+        map: map,
     }
 
 }
@@ -50,7 +49,22 @@ const createPin = (pnt, map) => {
         position: pnt,
         map: map,
         title: 'Hello World!'
-      });
+    });
 }
 
-export {confirmPost, attachHandlers}
+const createPins = (pins) => {
+    pins.forEach(pin => {
+        const pnt = { lat: Number(pin.lat), lng: Number(pin.lng) }
+        const marker = new google.maps.Marker({
+            position: pnt,
+            map: map,
+            title: 'Hello World!'
+        });
+    })
+}
+
+const createFeed = () => {
+
+}
+
+export { confirmPost, attachHandlers, createPins, createFeed }

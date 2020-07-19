@@ -1,4 +1,4 @@
-import {confirmPost} from './ui';
+import { confirmPost } from './ui';
 
 // Create the script tag, set the appropriate attributes
 var script = document.createElement('script');
@@ -11,28 +11,30 @@ const pntToCoord = (pnt) => {
     lat = lat.toFixed(4);
     let lng = pnt.lng();
     lng = lng.toFixed(4);
-    return {lat, lng}
+    return { lat, lng }
 }
 
 
 const clickCoordinates = (pnt, map) => {
-    const {lat, lng} = pntToCoord(pnt)
+    const { lat, lng } = pntToCoord(pnt)
     console.log("Clicked Latitude: " + lat + "  Longitude: " + lng);
-    
+
     confirmPost(pnt, map)
 }
 
 // Attach your callback function to the `window` object
-window.initMap = function() {
-  // JS API is loaded and available
+window.initMap = function () {
+    // JS API is loaded and available
     const map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 35.963180, lng: -83.92324},
+        center: { lat: 35.963180, lng: -83.92324 },
         zoom: 16
-      })
+    })
+
+    window.map = map;
 
     //   https://stackoverflow.com/questions/13984338/get-map-latitude-longitude-from-mouse-position
     google.maps.event.addListener(map, 'click', function (event) {
-        clickCoordinates(event.latLng, map);               
+        clickCoordinates(event.latLng, map);
     });
 };
 

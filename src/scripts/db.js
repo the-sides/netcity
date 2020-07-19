@@ -14,7 +14,7 @@ const pntToCoord = (pnt) => {
     lat = lat.toFixed(4);
     let lng = pnt.lng();
     lng = lng.toFixed(4);
-    return {lat, lng}
+    return { lat, lng }
 }
 
 // Query data helper
@@ -38,23 +38,34 @@ firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
-const getPins = () => {};
+async function getPins() {
+    const collection = db.collection('pins')
+    const pins = [];
+
+    await collection.get().then((snap) => {
+        snap.forEach(doc => {
+            pins.push(doc.data());
+        })
+    })
+
+    return pins;
+};
 
 const postPin = (pnt, content, user = 'anon') => {
     // Add a new document with a generated id.
-    const {lat, lng} = pntToCoord(pnt)
+    const { lat, lng } = pntToCoord(pnt)
     db.collection("pins").add({
         lat: lat,
-        lng: lng, 
+        lng: lng,
         content: content,
-        user: user, 
+        user: user,
     })
-    .then(function (docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function (error) {
-        console.error("Error adding document: ", error);
-    });
+        .then(function (docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function (error) {
+            console.error("Error adding document: ", error);
+        });
 }
 
 export { db, getPins, postPin }
