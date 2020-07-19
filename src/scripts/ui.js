@@ -15,9 +15,12 @@ const handlePostCancel = () => {
 }
 
 const handlePostAccept = () => {
-    createPin(window.submitBody.pnt, window.submitBody.map);
+    const marker = createPin(window.submitBody.pnt, window.submitBody.map);
     postPin(window.submitBody.pnt, composerElm.value)
 
+    createFeedItem({
+        content: composerElm.value,
+    }, marker)
     curtainElm.classList.remove('prompt')
     composerElm.value = '';
 }
@@ -68,6 +71,7 @@ const createPin = (pnt, map) => {
         map: map,
         title: 'Hello World!'
     });
+    return marker; 
 }
 
 const createPins = (pins) => {
