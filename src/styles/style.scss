@@ -114,6 +114,8 @@ body {
   position: absolute;
   right: 1.25rem;
   top: 5rem;
+  overflow-y: auto;
+  height: 80vh;
 }
 
 .post {
