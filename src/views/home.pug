@@ -3,6 +3,18 @@ extends layout
 block content
     #map
     #hud
+        #curtain
+            #confirm.box
+                h4 You're about to post...
+                p.toPost Hello World
+                span.cancelText CANCEL
+                svg.btn.cancelBtn(width='245', height='69', viewBox='0 0 245 69', fill='none', xmlns='http://www.w3.org/2000/svg')
+                    path(d='M0 2C0 0.89543 0.89543 0 2 0H242.035C243.676 0 244.619 1.8686 243.643 3.18878L195.6 68.1888C195.222 68.699 194.626 69 193.991 69H2C0.89543 69 0 68.1046 0 67V2Z', fill='#1B262C')
+                span.acceptText POST
+                svg.btn.acceptBtn(xmlns='http://www.w3.org/2000/svg', width='245', height='69', viewBox='0 0 245 69', fill='none')
+                    path(d='M49.4004 0.811222C49.7775 0.301022 50.3743 0 51.0088 0H243C244.105 0 245 0.895431 245 2V67C245 68.1046 244.105 69 243 69H2.96527C1.32362 69 0.381141 67.1314 1.35693 65.8112L49.4004 0.811222Z', fill='#BBE1FA')
+
+
         img#logo(src="images/logo.png")
-        textarea#composer(name="composer", cols="40", rows="4", placeholder="What did you find?")
+        textarea#composer.box(name="composer", cols="40", rows="4", placeholder="What did you find?")
     

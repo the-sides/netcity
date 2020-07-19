@@ -31,23 +31,104 @@ html, body {
       pointer-events: auto;
     }
 }
+
+#curtain {
+  position: absolute;
+  @include inset;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 15;
+  pointer-events: none;
+
+  & > * {
+    z-index: 19;
+  }
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out ;
+  display: none;
+  &.prompt {
+    display: block;
+    opacity: 1;
+  }
+  #confirm {
+    position: absolute;
+    @include inset;
+    margin: auto;
+    margin-top: 30vh;
+    width: 30vw;
+    height: 25vh;
+  }
+  .btn, span {
+    position: absolute;
+    bottom: -5rem;
+    &.cancelBtn {
+      left: -4rem;
+    }
+    &.cancelText {
+      left: -2rem;
+    }
+    &.acceptBtn {
+      right: -4rem;
+    }
+    &.acceptText {
+      color: $dark;
+      right: -2rem;
+    }
+  }
+  .btn {
+    z-index: 21;
+    pointer-events: auto;
+    cursor: pointer;
+    path {
+      pointer-events: none;
+    }
+    &:hover {
+      transform: translate(2px, -2px);
+    }
+  }
+  span {
+      z-index: 22;
+      bottom: -5.25rem;
+      margin: 1.3rem;
+      pointer-events: none;
+  }
+  h4 {
+    font-size: 28px;
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid $light;
+  }
+  p {
+    margin-left: 0.75rem;
+  }
+}
+
+.box {
+  padding: 1.2rem 1.6rem;
+  background: rgba(27, 38, 44, 0.6);
+  border: 2px solid #BBE1FA;
+  box-sizing: border-box;
+  border-radius: 8px;
+  outline: none;
+  
+  @include text-body;
+  
+  color: $light;
+}
+
 #composer {
   position: absolute;
   left: 2rem;
   bottom: 2rem;
-  background: rgba(27, 38, 44, 0.6);
-  border: 2px solid #BBE1FA;
-  box-sizing: border-box;
   box-shadow: -4px 8px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-
-  @include text-body;
   &::placeholder {
     color: rgba(187, 225, 250, 0.55);
   }
-  color: $blue-light;
-  padding: 1.2rem 1.6rem;
 }
+
+
 
 #logo {
   position: relative;
